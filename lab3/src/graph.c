@@ -75,13 +75,20 @@ void dijkstra(int start) {
     }
 }
 
+typedef struct {
+    char name[15];
+    char intro[100];
+} NodeInfo;
+
+NodeInfo node_info[MAX_NODES];
+
 void print_path(int start, int end) {
     if (dist[end] == INF) {
-        printf("没有 %d 到 %d 的路径\n", start, end);
+        printf("没有 %s 到 %s 的路径\n", node_info[start].name, node_info[end].name);
         return;
     }
 
-    printf(" %d 到 %d 的最短路径长度为 %d\n", start, end, dist[end]);
+    printf(" %s 到 %s 的最短路径长度为 %d\n", node_info[start].name, node_info[end].name, dist[end]);
     int path[MAX_NODES];
     int path_length = 0;
 
@@ -91,18 +98,11 @@ void print_path(int start, int end) {
 
     printf("路径为: \n");
     for (int i = path_length - 1; i >= 0; i--) {
-        printf("%d ", path[i]);
+        printf("%s ", node_info[path[i]].name);
         if (i > 0) printf("-> ");
     }
     printf("\n");
 }
-
-typedef struct {
-    char name[15];
-    char intro[100];
-} NodeInfo;
-
-NodeInfo node_info[MAX_NODES];
 
 int getInfo_byName(char* name) {
     for(int i = 0; i < n; i++) {
