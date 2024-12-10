@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -g
 
-TARGET = lab2
+TARGET = lab3
 
 SRCS = $(shell find . -name '*.c')
 
