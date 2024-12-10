@@ -110,6 +110,7 @@ int getInfo_byName(char* name) {
             return i;
         }
     }
+    return -1;
 }
 
 void printInfo_byIndex(int index)
