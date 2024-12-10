@@ -11,7 +11,6 @@ static void minHeapify(MinHeap* minHeap, size_t idx) {
     size_t left = 2 * idx + 1;
     size_t right = 2 * idx + 2;
     
-    // 找出左右子节点中频率更小的
     if (left < minHeap->size && minHeap->array[left]->freq < minHeap->array[smallest]->freq) {
         smallest = left;
     }
@@ -19,7 +18,7 @@ static void minHeapify(MinHeap* minHeap, size_t idx) {
     if (right < minHeap->size && minHeap->array[right]->freq < minHeap->array[smallest]->freq) {
         smallest = right;
     }
-    // 如果子节点中有更小的频率，则交换并继续堆化
+    
     if (smallest != idx) {
         swapNodes(&minHeap->array[smallest], &minHeap->array[idx]);
         minHeapify(minHeap, smallest);
